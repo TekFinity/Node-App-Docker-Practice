@@ -1,0 +1,28 @@
+docker run -v $(pwd):/app:ro -v /app/node_modules -p 3000:3000 -d --name node-app node-app-image
+docker run -v $(pwd):/app:ro -v /app/node_modules --env PORT=4000 -p 3000:4000 -d --name node-app node-app-image
+docker run -v $(pwd):/app:ro -v /app/node_modules --env-file ./.env -p 3000:4000 -d --name node-app node-app-image
+docker exec -it node-app bash
+ printenv
+
+docker rm node-app -f
+
+docker volume ls
+docker volume prune
+docker rm node-app -fv
+
+ docker-compose up
+ docker-compose down -v
+
+
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d
+docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
+
+docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --no-deps <required-service-name>
+
+docker exec -it 6ae693927e54 mongo -u "Asmita" -p "pass"
+
+
+docker inspect 09b39bd7347a
+
+ docker network ls
+docker network inspect <network name>

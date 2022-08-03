@@ -1,0 +1,15 @@
+version: '3'
+services:
+  app:
+    build: 
+      context: .
+      args:
+        NODE_ENV: development
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    command: npm run dev
+    environment:
+      - MONGO_USER=Asmita
+      - MONGO_PASSWORD=pass
+    
